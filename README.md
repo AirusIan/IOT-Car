@@ -1,7 +1,7 @@
 # IOT-Car
 ⚫Oerview
 
-  You can control the car with Tkinter Button
+  You can control the car with your eyes
   
 ⚫What u need
 
