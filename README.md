@@ -74,13 +74,13 @@
       print("left!")
 
   def right():
-      # set the BCM17 pin to have the current
+      
       GPIO.output(pin_right_f, GPIO.LOW)
-      # set the BCM27 pin to have the current
+     
       GPIO.output(pin_right_b, GPIO.HIGH)
-      # set the BCM22 pin to have the current
+      
       GPIO.output(pin_left_f, GPIO.HIGH)
-      # set the BCM10 pin to have the current
+      
       GPIO.output(pin_left_b, GPIO.LOW)
       print("right!")
 
