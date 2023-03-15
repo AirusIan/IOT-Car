@@ -2,14 +2,6 @@ import tkinter as tk
 import RPi.GPIO as GPIO
 # 建立主視窗和 Frame（把元件變成群組的容器）
 window = tk.Tk()
-top_frame = tk.Frame(window)
-
-# 將元件分為 top/bottom 兩群並加入主視窗
-top_frame.pack()
-bottom_frame = tk.Frame(window)
-bottom_frame.pack(side=tk.BOTTOM)
-
-
 pin_right_f = 31
 pin_right_b = 33
 pin_left_f = 35
@@ -82,28 +74,23 @@ def closeGPIO(gpio_pin):
 
 
 
-# 建立事件處理函式（event handler），透過元件 command 參數存取
+while True:
+    _, frame = webcam.read()
+    gaze.refresh(frame)
+
+    new_frame = gaze.annotated_frame()
+
+    if gaze.is_right():
+        right()
+    elif gaze.is_left():
+        left()
+    elif gaze.is_center():
+        forward()
+    else
+        stop()
 
 
-# 以下為 top 群組
-left_button = tk.Button(top_frame, text='GoLeft', fg='red',command= right)
-# 讓系統自動擺放元件，預設為由上而下（靠左）
-left_button.pack(side=tk.LEFT)
 
-middle_button = tk.Button(top_frame, text='Forward', fg='green',command=forward)
-middle_button.pack(side=tk.LEFT)
-
-right_button = tk.Button(top_frame, text='GoRight', fg='blue',command=left)
-right_button.pack(side=tk.LEFT)
-
-stop_button = tk.Button(top_frame, text='Stop', fg='yellow',command=stop)
-stop_button.pack(side=tk.BOTTOM)
-
-# 以下為 bottom 群組
-# bottom_button 綁定 echo_hello 事件處理，點擊該按鈕會印出 hello world :)
-bottom_button = tk.Button(bottom_frame, text='Back', fg='black', command=backward)
-# 讓系統自動擺放元件（靠下方）
-bottom_button.pack(side=tk.TOP)
 
 # 運行主程式
 
